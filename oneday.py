@@ -1,40 +1,41 @@
-from InquirerPy import inquirer
+def somar(a, b):
+    print(f"Soma: {a + b}")
 
-produtos = []
+def subtrair(a, b):
+    print(f"Subtração: {a - b}")
 
-def inicializar_p():
-    global produtos
-    produtos = []
+def multiplicar(a, b):
+    print(f"Multiplicação: {a * b}")
+
+def dividir(a, b):
+    if b == 0:
+        print("Erro: divisão por zero!")
+    else:
+        print(f"Divisão: {a / b}")
 
 
-def encontrar_indice_produto(nome_produto):
+while True:
     try:
-        return produtos.index(nome_produto)
+        valor_a = float(input("Digite o primeiro valor: "))
+        valor_b = float(input("Digite o segundo valor: "))
     except ValueError:
-        return -1
+        print("Digite apenas números válidos!")
+        continue
 
+    operadores = input(
+        "\n1 - Somar\n2 - Subtrair\n3 - Multiplicar\n4 - Dividir\n0 - Sair\nEscolha uma opção: "
+    )
 
-def cadastrar_produtos(produto):
-    pass
-
-
-def buscar_produto():
-    pass
-
-
-def remove_produto():
-    pass
-
-
-def menu():
-    global opcao_menu
-    opcao_menu = inquirer.select(
-        message="\nBem Vindo\n",
-        choices=[
-            "1 - Cadastrar produto",
-            "2 - Listar produtos",
-            "3 - Buscar produto",
-            "4 - Remover produto",
-            "5 - Sair"
-        ]
-    ).execute()
+    if operadores == "1":
+        somar(valor_a, valor_b)
+    elif operadores == "2":
+        subtrair(valor_a, valor_b)
+    elif operadores == "3":
+        multiplicar(valor_a, valor_b)
+    elif operadores == "4":
+        dividir(valor_a, valor_b)
+    elif operadores == "0":
+        print("Saindo da calculadora...")
+        break
+    else:
+        print("Digite um valor válido!")
